@@ -1,0 +1,1 @@
+xsetroot -cursor_name Bibata-Modern-Ice
