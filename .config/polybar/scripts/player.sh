@@ -1,18 +1,5 @@
 #!/bin/bash
-#
-#  _____ _______ _                         
-# |_   _|__   __| |                        
-#   | |    | |  | |__   ___ _ __ ___   ___ 
-#   | |    | |  | '_ \ / _ \ '_ ` _ \ / _ \
-#  _| |_   | |  | | | |  __/ | | | | |  __/
-# |_____|  |_|  |_| |_|\___|_| |_| |_|\___|
-#                                          
-#ITheme Polybar Music Status                                         
-#Based on https://github.com/Crash-Zeus
-#Modified by Amelia Yukii (https://transfem.social/@Amelia)
-#https://github.com/Insert5StarName
-#
-# Module for Music  Status
+
 readonly command=$1
 # Set Player
 readonly PLAYER="firefox"
