@@ -16,6 +16,5 @@ First install all dependencies those being the ones listed above plus
 * playerctl
 * pywal
 * calc
-* network-manager-applet
-* wpgtk (dont forget to install the gtk templates)
+* wpgtk
 * (if i forgot any dependencies let me know)
