@@ -1,0 +1,183 @@
+#!/bin/bash
+#
+#  _____ _______ _                         
+# |_   _|__   __| |                        
+#   | |    | |  | |__   ___ _ __ ___   ___ 
+#   | |    | |  | '_ \ / _ \ '_ ` _ \ / _ \
+#  _| |_   | |  | | | |  __/ | | | | |  __/
+# |_____|  |_|  |_| |_|\___|_| |_| |_|\___|
+#                                          
+#ITheme I3 Config                                        
+#Made by Amelia Yukii (https://transfem.social/@Amelia)
+#https://github.com/Insert5StarName
+#
+gaps inner 10
+gaps outer 3
+
+set $mod Mod4
+font CaskaydiaCove Nerd Font Mono:Regular 8
+default_border pixel 1
+exec --no-startup-id $HOME/.config/i3/layout.py 
+exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option grp:alt_shift_toggle
+exec --no-startup-id nm-applet
+exec --no-startup-id dunst
+exec --no-startup-id picom
+exec --no-startup-id polybar
+exec --no-startup-id nitrogen --restore
+exec --no-startup-id blueman-tray
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec kitty
+
+# start browser
+bindsym $mod+Shift+w exec firefox
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# rofi dmenu
+bindsym $mod+d exec rofi -show drun 
+
+# rofi display menu
+bindsym $mod+p exec $HOME/.config/rofi/scripts/rofi-display-menu
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+z split h
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# define variables for workspace
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 
+bindsym $mod+Shift+r restart
+# exit i3 
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+mode "resize" {
+      	bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+  }
+
+  bindsym $mod+r mode "resize"
+
+# Screenshots
+bindsym Print exec --no-startup-id flameshot gui
+
+default_border pixel 1
+default_floating_border pixel 1
+for_window [class="^.*"] border pixel 1
+for_window [class="flameshot"] floating enable, fullscreen disable, move absolute position 0 0, border pixel 0
+
+# set gaps
+gaps inner 5
+gaps outer 5
+# smart_gaps on
+# smart_borders on
+
+
+
+# monitor settings
+exec --no-startup-id $HOME/.config/i3/script/display.sh
+
+# picom
+exec_always --no-startup-id picom -b --config $HOME/.config/picom/picom.conf
+
+# xinput set 23 to mouse device number(xinput --list)
+exec_always --no-startup-id for id in $(xinput list | grep "pointer" | cut -d '=' -f 2 | cut -f 1); do xinput --set-prop $id 'libinput Accel Profile Enabled' 0, 1; done
+
+client.focused #5E5C61 #0d0d0e #cbc8c8 #5E5C61 #5E5C61
