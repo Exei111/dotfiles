@@ -10,6 +10,8 @@ This Rice works with:
 * Dunst
 * Picom (yay -S picom-ftlabs-git)
 * Polybar
+* feh
+* flameshot
 
 ## Install
 First install all dependencies those being the ones listed above plus
